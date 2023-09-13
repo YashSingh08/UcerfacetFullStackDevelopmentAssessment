@@ -12,6 +12,19 @@ app.get("/api/sentence", (req, res) => {
   res.json({ sentence });
 });
 
+// const correctSentence =
+//   "We design and develop applications that run the world and showcase the future";
+
+// app.post("/api/validate", (req, res) => {
+//   const { enteredLetters } = req.body;
+
+//   // Compare enteredLetters with correctSentence
+//   const isCorrect = enteredLetters === correctSentence;
+
+//   // Return the result
+//   res.json({ isCorrect });
+// });
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

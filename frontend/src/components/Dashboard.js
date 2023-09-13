@@ -41,7 +41,7 @@ function Dashboard() {
     } else if (timer <= 300 - 180) {
       setMessageText('You won!');
     } else if (timer > 300 - 180 && isBoardFilledCorrectly()) {
-      setMessageText('You won!');
+      setMessageText('Fill the cells in less than 3 minutes to win');
     } else if (timer > 300 - 180) {
       setMessageText('Fill the cells in less than 3 minutes to win');
     } else {
@@ -168,6 +168,32 @@ function Dashboard() {
     setTimer(300);
   };
 
+// // handle submit functionality
+//   const handleSubmit = () => {
+//     // Extract the entered letters from editable cells
+//     const enteredLetters = cellRefs.current
+//       .map((cellRef) => cellRef.current.innerText || '')
+//       .join('');
+
+//     // Send a POST request to the validation API
+//     axios
+//       .post('/api/validate', { enteredLetters })
+//       .then((response) => {
+//         const { isCorrect } = response.data;
+
+//         if (isCorrect) {
+//           setMessageText('You win!');
+//         } else {
+//           setMessageText('You lose');
+//         }
+
+//         setSubmitted(true); // Set submitted flag to true
+//       })
+//       .catch((error) => {
+//         console.error('Error:', error);
+//         // Handle the error (e.g., set an error state)
+//       });
+//   };
   return (
 
     <div className="container">
@@ -196,6 +222,7 @@ function Dashboard() {
             <button>Hint</button>
           </div>
           <div className="submit_button">
+            {/* <button onClick={handleSubmit}>Submit</button> */}
             <button>Submit</button>
           </div>
         </div>

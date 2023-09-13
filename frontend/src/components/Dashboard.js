@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './Dashboard.css'; // You can create a CSS file for styling
-import axios from 'axios'; // Import Axios for making HTTP requests
+import './Dashboard.css'; 
+import axios from 'axios';
 
 function Dashboard() {
   const [message, setMessage] = useState('');
   const [editableCells, setEditableCells] = useState([]);
   const [messageText, setMessageText] = useState('');
-  const [timer, setTimer] = useState(300); // 300 seconds (5 minutes)
-  const cellRefs = useRef([]); // To store references to all cells
+  const [timer, setTimer] = useState(300); 
+  const cellRefs = useRef([]); 
 
   useEffect(() => {
     // Make a GET request to the API to fetch the message
@@ -17,8 +17,8 @@ function Dashboard() {
         setMessage(response.data.sentence);
       })
       .catch((error) => {
-        console.error('Error:', error);
-        // Handle the error (e.g., set an error state)
+        console.error('Error while fetching messaege api: ', error);
+      
       });
   }, []);
 
@@ -39,37 +39,31 @@ function Dashboard() {
     } else if (messageText === 'You won!' || messageText === "You Lose") {
       clearInterval(interval);
     } else if (timer <= 300 - 180) {
-      // If the user fills cells in less than 3 minutes, set "You won!"
       setMessageText('You won!');
     } else if (timer > 300 - 180 && isBoardFilledCorrectly()) {
-      // If the user fills cells in more than 3 minutes but correctly, set "You won!"
       setMessageText('You won!');
     } else if (timer > 300 - 180) {
-      // If the user fills cells in more than 3 minutes, set "Fill the cells in less than 3 minutes to win"
       setMessageText('Fill the cells in less than 3 minutes to win');
     } else {
-      // If the board is filled but not correctly, set "Try again"
       setMessageText('Try again');
     }
 
     return () => {
-      clearInterval(interval); // Clear the interval on component unmount
+      clearInterval(interval);
     };
   }, [timer, messageText]);
 
   // Helper function to create cells
   const createEditableCells = () => {
     const cells = message.split('').map((letter, index) => {
-      // Determine if the cell should be red (for empty spaces)
-      const isRedCell = letter === ' ';
+      const isEmptyCell = letter === ' ';
 
-      // Determine if the cell should be prefilled and non-editable
       const isPrefilledCell = [
         1, 4, 6, 8, 12, 23, 28, 29, 37, 38, 41, 43, 45, 46, 48, 50,
         53, 54, 57, 58, 59, 61, 63, 64, 66, 67, 68, 70, 71, 72, 73
-      ].includes(index + 1); // Adjust for 1-indexed list
+      ].includes(index + 1);
 
-      const isWhitespaceCell = isRedCell && !isPrefilledCell;
+      const isWhitespaceCell = isEmptyCell && !isPrefilledCell;
 
       const cellRef = React.createRef();
       cellRefs.current.push(cellRef);
@@ -78,13 +72,13 @@ function Dashboard() {
         <div
           className={`grid-cell ${isWhitespaceCell ? 'red-cell' : ''}`}
           key={index}
-          contentEditable={!isWhitespaceCell && !isPrefilledCell} // Make cells editable only if not whitespace or prefilled
+          contentEditable={!isWhitespaceCell && !isPrefilledCell} 
           onKeyDown={(e) => handleKeyDown(e, index, letter)}
           onBlur={() => handleBlur(index)}
           ref={cellRef}
           style={{
-            backgroundColor: isWhitespaceCell ? '#4d6c82' : '', // Set background color for whitespace cells
-            cursor: isWhitespaceCell ? 'not-allowed' : 'auto', // Disable cursor for whitespace cells
+            backgroundColor: isWhitespaceCell ? '#4d6c82' : '',
+            cursor: isWhitespaceCell ? 'not-allowed' : 'auto', 
           }}
         >
           {isWhitespaceCell ? '\u00A0' /* Non-breaking space */ : isPrefilledCell ? letter : ''}
@@ -104,7 +98,7 @@ function Dashboard() {
       }
       nextIndex++;
     }
-    return -1; // No empty cell found
+    return -1; 
   };
 
   // Handle keydown event to check correctness and set background color
@@ -116,7 +110,7 @@ function Dashboard() {
       if (currentCellRef) {
         const currentCell = currentCellRef.current;
         if (currentCell) {
-          currentCell.innerText = value; // Display the input on the current cell
+          currentCell.innerText = value; 
           e.preventDefault();
           const isCorrect = value === expectedLetter.toUpperCase();
           currentCell.style.backgroundColor = isCorrect ? 'green' : 'red';
@@ -126,10 +120,10 @@ function Dashboard() {
           if (nextEmptyCellIndex !== -1) {
             const nextEmptyCell = cellRefs.current[nextEmptyCellIndex].current;
             if (nextEmptyCell) {
-              nextEmptyCell.focus(); // Move focus to the next empty cell
+              nextEmptyCell.focus(); 
             }
           } else {
-            // All cells are filled
+
             setMessageText(isBoardFilledCorrectly() ? 'You won!' : 'Try again');
           }
         }
@@ -143,7 +137,7 @@ function Dashboard() {
     if (cellRef) {
       const currentCell = cellRef.current;
       if (currentCell && !currentCell.innerText) {
-        currentCell.style.backgroundColor = ''; // Reset background color if cell is empty
+        currentCell.style.backgroundColor = '';
       }
     }
   };
@@ -167,11 +161,11 @@ function Dashboard() {
       const cell = cellRef.current;
       if (cell && cell.contentEditable === 'true') {
         cell.innerText = '';
-        cell.style.backgroundColor = ''; // Reset background color
+        cell.style.backgroundColor = ''; 
       }
     });
     setMessageText('');
-    setTimer(300); // Reset the timer to 5 minutes (300 seconds)
+    setTimer(300);
   };
 
   return (
@@ -194,17 +188,21 @@ function Dashboard() {
         </div>
 
         <div className="grid">{editableCells}</div>
+        <div className="buttons">
+            <div className="reset_button">
+            <button onClick={resetCells}>Reset</button>
+          </div>
+          <div className="hint_button">
+            <button>Hint</button>
+          </div>
+          <div className="submit_button">
+            <button>Submit</button>
+          </div>
+        </div>
+        <div className="message_container">
+          {messageText && <div className="message">{messageText}</div>}
+        </div>
         
-        <div className="reset_button">
-          <button onClick={resetCells}>Reset</button>
-        </div>
-        <div className="hint_button">
-          <button>Hint</button>
-        </div>
-        <div className="submit_button">
-          <button>Submit</button>
-        </div>
-        {messageText && <div className="message">{messageText}</div>}
       </div>
     </div>
   );

@@ -1,10 +1,30 @@
+.login_page {
+    text-align: center;
+}
 .login_page h2{
     color: #ffffff;
     font-size: 80px;
-    text-shadow: 5px 5px #2d6221, 6px 6px #9f831e
+    text-shadow: 5px 5px #2d6221, 6px 6px #9f831e;
+
 }
 
-.login_input {
-    margin: 10px;
-    
+.login_inputs {
+    margin: 20px;
+}
+.email_field {
+    margin: 20px;
+    width: 200px;
+    height: 20px;
+}
+.password_field {
+    margin: 20px;
+    width: 200px;
+    height: 20px;
+}
+.login_button button{
+    width: 200px;
+    height: 30px;
+    background-color: #4d6c82;
+    color: #fff;
+    font-size: large;
 }

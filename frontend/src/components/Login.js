@@ -27,20 +27,30 @@ function Login() {
   return (
     <div className="login_page">
       <h2>Login</h2>
-      <input
-        className="login_input"
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+      <div className="login_inputs">
+        <div className="email_input">
+          <input
+            className="email_field"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
+        </div>
+        <div className="password_input">
+          <input
+          className="password_field"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        
+      </div>
+      <div className="login_button">
+        <button onClick={handleLogin}>Login</button>
+      </div>
       <p>{message}</p>
     </div>
   );

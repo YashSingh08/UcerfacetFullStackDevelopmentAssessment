@@ -1,0 +1,10 @@
+.login_page h2{
+    color: #ffffff;
+    font-size: 80px;
+    text-shadow: 5px 5px #2d6221, 6px 6px #9f831e
+}
+
+.login_input {
+    margin: 10px;
+    
+}

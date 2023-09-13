@@ -1,0 +1,99 @@
+/* Dashboard.css */
+
+/* Overall styles for the dashboard container */
+
+/* Header styles */
+.header{
+    text-transform: uppercase;
+    color: white;
+}
+
+.gameboard_header{
+    display: flex;
+    justify-content: space-between;
+}
+.heading{
+    color: #ffffff;
+    font-size: xx-large;
+    text-transform: uppercase;
+    text-shadow: 5px 5px #2d6221, 6px 6px #9f831e;
+    font-size: 50px;
+    font-weight: bold;
+}
+.timer{
+    align-items: center;
+}
+.timer_text{
+    font-size: medium;
+    color: #ffffff;
+}
+.timer_running {
+    font-size: xx-large;
+    color: #eac52e;
+}
+.reset_button{
+    margin-top: 10px;
+}
+.message{
+    margin-top: 10px;
+    background-color: white;
+    width: fit-content;
+}
+
+/* Grid cell styles */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    /* Adjust the number of columns as needed */
+    gap: 5px;
+    /* Adjust the gap size between cells */
+    margin-top: 10px;
+}
+
+.grid-cell {
+    width: 40px;
+    /* Adjust cell width */
+    height: 40px;
+    /* Adjust cell height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    /* Adjust font size */
+    background-color: #fff;
+    /* Background color for editable cells */
+    border: 1px;
+    border-radius: 20%;
+    /* Cell border */
+    cursor: text;
+    user-select: none;
+    /* Disable text selection for non-editable cells */
+    position: relative;
+}
+
+/* Styles for prefilled cells */
+.grid-cell.prefilled {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Styles for empty non-editable cells (whitespace) */
+.empty-non-editable {
+    background-color: red;
+    /* Gray background color for empty cells */
+    cursor: default;
+}
+
+/* Styles for the prefilled letter in prefilled cells */
+.prefilled-letter {
+    color: #000;
+    /* Black text color for prefilled letters */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.message{
+    color: black;
+}

@@ -1,0 +1,22 @@
+/* Add these styles to your CSS file */
+.puzzle-cell {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #000;
+    outline: none;
+    /* Remove focus outline */
+}
+
+.editable {
+    background-color: white;
+}
+
+.uneditable {
+    background-color: white;
+}
+
+.blank {
+    background-color: black;
+}

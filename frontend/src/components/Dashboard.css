@@ -1,14 +1,15 @@
 /* Header styles */
-.header{
+.header {
     text-transform: uppercase;
     color: white;
 }
 
-.gameboard_header{
+.gameboard_header {
     display: flex;
     justify-content: space-between;
 }
-.heading{
+
+.heading {
     color: #ffffff;
     font-size: xx-large;
     text-transform: uppercase;
@@ -16,19 +17,22 @@
     font-size: 50px;
     font-weight: bold;
 }
-.timer{
+
+.timer {
     align-items: center;
 }
-.timer_text{
+
+.timer_text {
     font-size: medium;
     color: #ffffff;
 }
+
 .timer_running {
     font-size: xx-large;
     color: #eac52e;
 }
 
-.message{
+.message {
     margin-top: 10px;
     background-color: white;
     width: fit-content;
@@ -69,50 +73,58 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.message{
+
+.message {
     color: white;
     background-color: #000;
     font-size: larger;
 }
 
-.buttons{
+.buttons {
     display: flex;
     justify-content: space-between;
 }
+
 .reset_button {
     margin-top: 10px;
     width: fit-content;
 }
+
 .reset_button button {
-    width: 200px;
-        height: 50px;
-        background-color: #91c2e2;
-        font-size: xx-large;
-        font-weight: 500;
-}
-.hint_button{
-    margin-top: 10px;
-    width: fit-content;
-}
-.hint_button button{
     width: 200px;
     height: 50px;
     background-color: #91c2e2;
     font-size: xx-large;
-    font-weight:500 ;
+    font-weight: 500;
 }
-.submit_button{
+
+.hint_button {
     margin-top: 10px;
-        width: fit-content;
+    width: fit-content;
 }
-.submit_button button{
+
+.hint_button button {
     width: 200px;
-        height: 50px;
-        background-color: #23a7ff;
-        font-size: xx-large;
-        font-weight: 500;
+    height: 50px;
+    background-color: #91c2e2;
+    font-size: xx-large;
+    font-weight: 500;
 }
-.message_container{
+
+.submit_button {
+    margin-top: 10px;
+    width: fit-content;
+}
+
+.submit_button button {
+    width: 200px;
+    height: 50px;
+    background-color: #23a7ff;
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.message_container {
     display: flex;
     justify-content: center;
 }

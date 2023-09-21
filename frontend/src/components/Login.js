@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 import "./Login.css";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
+import { useNavigate } from "react-router-dom";
 import { login } from "../api";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     const user = login(email, password);
@@ -17,7 +17,7 @@ function Login() {
       setMessage(`Welcome, ${user.email}!`);
       // Show an alert for successful login
       alert("Login successful");
-      // Redirect to the next page (you can replace '/dashboard' with your desired route)
+      // Redirect to the next page
       navigate("/dashboard");
     } else {
       setMessage("Invalid credentials");
@@ -35,18 +35,17 @@ function Login() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            />
+          />
         </div>
         <div className="password_input">
           <input
-          className="password_field"
+            className="password_field"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        
       </div>
       <div className="login_button">
         <button onClick={handleLogin}>Login</button>
